@@ -1,17 +1,12 @@
-import { StrictMode, type ReactElement } from "react"
-import { createRoot } from "react-dom/client"
-import "./index.css"
+import { Router } from "@/components/custom/router";
+import { construct_root } from "@/utils/create-root";
+import { AppProviders } from "@/components/custom/app-providers";
 
-const construct_root = (element: ReactElement) => {
-  const root = document.getElementById("root")
+import "@/styles/fonts.css";
+import "@/styles/main.css";
 
-  if (!root) throw new Error("Root element #root was not found")
-
-  createRoot(root).render(element)
-}
-
-construct_root(
-  <StrictMode>
-    <p>Hello</p>
-  </StrictMode>
-)
+construct_root({ element: (
+      <AppProviders>
+        <Router />
+      </AppProviders>
+)});
