@@ -1,24 +1,33 @@
-import { ClerkProvider } from "@clerk/clerk-react";
 import { StrictMode, type ReactNode } from "react";
 import { ThemeWatcher } from "theme-watcher";
-
-import { expect } from "@/utils/expect";
+import { clerk } from "@/components/custom/providers/clerk";
+import { create_element_tree } from "@/utils/create-element-tree";
+import { convex } from "@/components/custom/providers/convex";
+import { posthog } from "@/components/custom/providers/posthog";
+import { BrowserRouter } from "react-router-dom";
 
 export type AppProviderProps = {
     children: ReactNode;
 };
 
 export const AppProviders = ({ children }: AppProviderProps) => {
-    const clerk_publishable_key = expect(
-        import.meta.env.VITE_CLERK_PUBLISHABLE_KEY as string,
-    );
+    const { Clerk } = clerk();
+    const { Convex } = convex();
+    const { PostHog, PostHogBoundary } = posthog();
 
-    return (
-        <StrictMode>
-            <ClerkProvider publishableKey={clerk_publishable_key}>
-                <ThemeWatcher />
-                {children}
-            </ClerkProvider>
-        </StrictMode>
-    );
+    const Providers = create_element_tree({ components: [
+        BrowserRouter,
+        Clerk,
+        Convex,
+        PostHog,
+        PostHogBoundary,
+        StrictMode,
+    ]});
+
+    return <>
+        <Providers>
+            <ThemeWatcher />
+            {children}
+        </Providers>
+    </>
 };

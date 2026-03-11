@@ -6,7 +6,7 @@ import "@/styles/fonts.css";
 import "@/styles/main.css";
 
 construct_root({ element: (
-      <AppProviders>
-        <Router />
-      </AppProviders>
+  <AppProviders>
+    <Router />
+  </AppProviders>
 )});
