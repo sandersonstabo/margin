@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import { Router } from "@/components/custom/router";
 import { construct_root } from "@/utils/create-root";
 import { AppProviders } from "@/components/custom/app-providers";

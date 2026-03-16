@@ -6,8 +6,10 @@
     "module": "ESNext",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "$/*": ["./*"]
     },
+    "resolveJsonModule": true,
     "skipLibCheck": true,
 
     /* Bundler mode */

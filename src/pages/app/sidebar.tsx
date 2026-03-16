@@ -1,10 +1,11 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Sidebar, SidebarFooter, SidebarContent } from "@/components/ui/sidebar";
+import { Sidebar, SidebarFooter, SidebarContent, SidebarHeader } from "@/components/ui/sidebar";
 import { use_auth } from "@/hooks/use-auth";
 import { IconSelector } from "@tabler/icons-react";
 import { Separator } from "@/components/ui/separator";
+import { Logo } from "@/components/custom/logo";
 
 const User = () => {
     const { actor } = use_auth();
@@ -36,6 +37,9 @@ const User = () => {
 
 export const AppSidebar = () => <>
     <Sidebar>
+        <SidebarHeader>
+            <Logo />
+        </SidebarHeader>
         <SidebarContent>
             123
         </SidebarContent>
